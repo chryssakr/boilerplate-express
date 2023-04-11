@@ -4,6 +4,13 @@ let app = express();
 
 //console.log("Hello World");
 
+const myLogger = function(req, res, next) {
+    console.log(req.method + " " + req.path + " - " + req.ip);
+    next();
+}
+
+app.use(myLogger);
+
 app.get("/", (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
@@ -21,15 +28,6 @@ app.get("/json", (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-  
 
 
 
