@@ -42,11 +42,17 @@ app.get("/:word/echo", (req, res) => {
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(urlencodedParser);
 
-app.get('/name', (req, res) => {
-    const {first, last} = req.query;
-    const fullName = `${first} ${last}`;
-    res.json({name: fullName});
-});
+app.route('/name')
+    .get((req, res) => {
+        const {first, last} = req.query;
+        const fullName = `${first} ${last}`;
+        res.json({name: fullName});
+    })
+    .post((req, res) => {
+        const {first, last} = req.body;
+        const fullName = `${first} ${last}`;
+        res.json({name: fullName});
+    });
 
 
 
