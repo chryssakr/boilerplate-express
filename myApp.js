@@ -2,6 +2,7 @@ const mySecret = process.env['MESSAGE_STYLE']
 require('dotenv').config()
 let express = require('express');
 let app = express();
+let bodyParser = require('body-parser');
 
 //console.log("Hello World");
 
@@ -37,6 +38,9 @@ app.get("/now", function(req, res, next) {
 app.get("/:word/echo", (req, res) => {
     res.json({echo: req.params.word});
 })
+
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.use(urlencodedParser);
 
 app.get('/name', (req, res) => {
     const {first, last} = req.query;
