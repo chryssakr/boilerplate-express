@@ -52,18 +52,6 @@ app.route('/name')
         const {first, last} = req.body;
         const fullName = `${first} ${last}`;
         res.json({name: fullName});
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+);
  module.exports = app;
